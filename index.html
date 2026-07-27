@@ -20,20 +20,74 @@
             justify-content: center;
             min-height: 100vh;
             padding: 20px;
+            overflow: hidden;
+            position: relative;
         }
+        
+        /* --- SISTEMA DE FOTOS DE HARDWARE NO FUNDO --- */
+        .bg-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0; 
+            animation: fader 12s infinite linear;
+        }
+        
+        /* Foto 1: Placa-mãe de PC em detalhes */
+        .bg-img:nth-child(1) {
+            background-image: url('https://unsplash.com');
+            animation-delay: 0s;
+        }
+        /* Foto 2: Notebook aberto mostrando a tela e teclado */
+        .bg-img:nth-child(2) {
+            background-image: url('https://unsplash.com');
+            animation-delay: 4s;
+        }
+        /* Foto 3: Circuito eletrônico/Hardware aproximado */
+        .bg-img:nth-child(3) {
+            background-image: url('https://unsplash.com');
+            animation-delay: 8s;
+        }
+
+        /* Efeito de transição suave (Aparece e Some) */
+        @keyframes fader {
+            0% { opacity: 0; }
+            15% { opacity: 0.05; } /* Opacidade em 5% para ficar bem sutil ao fundo */
+            40% { opacity: 0.05; } 
+            55% { opacity: 0; }    
+            100% { opacity: 0; }
+        }
+
+        /* --- CONTEÚDO PRINCIPAL (FRENTE) --- */
         .container {
             text-align: center;
             max-width: 450px;
             width: 100%;
+            position: relative;
+            z-index: 2; 
+            background-color: rgba(255, 255, 255, 0.90); /* Fundo do bloco ligeiramente mais firme para garantir leitura */
+            padding: 35px 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
         }
-        /* Define um tamanho equilibrado para o logo */
         .logo {
             max-width: 340px; 
             width: 100%;
             height: auto;
             margin-bottom: 20px;
         }
-        /* Alerta de em construção */
         .status-badge {
             display: inline-block;
             background-color: #f3f4f6;
@@ -47,7 +101,6 @@
             margin-bottom: 30px;
             border: 1px solid #e5e7eb;
         }
-        /* Linha divisória e bloco de contatos */
         .contatos {
             border-top: 1px solid #eaeaea;
             padding-top: 25px;
@@ -77,8 +130,15 @@
 </head>
 <body>
 
+    <!-- Carrossel de fotos de hardware ao fundo -->
+    <div class="bg-slideshow">
+        <div class="bg-img"></div>
+        <div class="bg-img"></div>
+        <div class="bg-img"></div>
+    </div>
+
     <div class="container">
-        <!-- Logo centralizado e menor -->
+        <!-- Seu Logo -->
         <img src="logo.png" alt="PCH Soluções" class="logo">
 
         <!-- Tag de Status -->
